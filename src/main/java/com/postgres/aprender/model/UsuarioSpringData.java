@@ -1,9 +1,12 @@
 package com.postgres.aprender.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class UsuarioSpringData {
@@ -21,6 +24,9 @@ public class UsuarioSpringData {
     private String email;
 
     private int idade;
+
+    @OneToMany(mappedBy = "usuarioSpringData")
+    private List<Telefone> telefone;
 
     public Long getId() {
         return id;
@@ -69,6 +75,16 @@ public class UsuarioSpringData {
     public void setIdade(int idade) {
         this.idade = idade;
     }
+
+    public List<Telefone> getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(List<Telefone> telefone) {
+        this.telefone = telefone;
+    }
+
+    
 
     
 }
